@@ -1,5 +1,14 @@
 (Development phase) Ecommerce product search API using NodeJS, ExpressJS and MongoDB
 
+-URL 
+/api/v1/products 
+/api/v1/products/static
+/api/v1/products?name=VALUE & price=VALUE --Search as per name and price
+/api/v1/products?sort=price name --Sort on the basis of name and price
+
 Features added so far 
 - Database Connection
 - Added the routes, controllers and model
+- User can now search products based on name (regular expression where the product containing any character of the search will show up)
+- Products can be searched as per price and company as well
+- User can also sort the products based on any parameters passed
