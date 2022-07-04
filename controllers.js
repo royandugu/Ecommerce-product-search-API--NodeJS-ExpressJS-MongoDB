@@ -6,7 +6,7 @@ const getProductsStatic=async (req,res)=>{
 }
 
 const getProducts=async (req,res)=>{
-    const {featured,name,price,company,sort}=req.query;
+    const {featured,name,price,company,sort,field}=req.query;
     const queryObject={};
     
     if(featured) queryObject.featured=(featured==='true')?true:false;
@@ -19,6 +19,10 @@ const getProducts=async (req,res)=>{
     if(sort){
         const sortArray=sort.split(',').join(' ');
         result.sort(sortArray);
+    }
+    if(field){
+        const fieldArray=field.split(',').join(' ');
+        result.select(fieldArray);
     }
 
     const products=await result;
