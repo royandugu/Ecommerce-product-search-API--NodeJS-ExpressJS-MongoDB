@@ -12,3 +12,4 @@ Features added so far
 - User can now search products based on name (regular expression where the product containing any character of the search will show up)
 - Products can be searched as per price and company as well
 - User can also sort the products based on any parameters passed
+- Paging based on limit
