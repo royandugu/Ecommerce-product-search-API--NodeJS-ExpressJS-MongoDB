@@ -6,7 +6,7 @@ const getProductsStatic=async (req,res)=>{
 }
 
 const getProducts=async (req,res)=>{
-    const {featured,name,price,company,sort,field}=req.query;
+    const {featured,name,price,company,sort,field,numericFilters}=req.query;
     const queryObject={};
     
     if(featured) queryObject.featured=(featured==='true')?true:false;
@@ -23,11 +23,26 @@ const getProducts=async (req,res)=>{
         const fieldArray=field.split(',').join(' ');
         result.select(fieldArray);
     }
+
     const limit=parseInt(req.query.limit)||10;
     const page=parseInt(req.query.page)||1;
-    const skip=(page-1)*limit;
+    const skip=(page-1)*limit;//10, page no.2 (2-1)*10, skip 10
     result.skip(skip).limit(limit);
     
+    const operatorMap={
+        ">":"$gt",
+        "<":"$lt",
+        ">=":"$gte",
+        "<=":"$lte",
+        "=":"$eq"
+    }
+
+    const regEx=/\b(<|>|<=|>=|=)/g;
+    const filters=numericFilters.replace(regEx,(match)=>{
+        return `-${operatorMap[match]}-`;
+    });
+    console.log(filters);
+
     const products=await result;
     res.status(200).json({noOfProducts:products.length,pageNo:page,data:products});
 }
