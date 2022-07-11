@@ -18,6 +18,7 @@
 `/api/v1/products?numericFilters=price<=40` --API will respond with the details of the products whose price is less than 40 </br>
 
 
+
 **How to use?** </br>
 1. Run `npm install` to install the dependencies from package.json </br>
 2. Create a .env file
