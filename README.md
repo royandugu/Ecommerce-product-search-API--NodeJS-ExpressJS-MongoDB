@@ -9,11 +9,11 @@ Features :
 
 -Routes 
 
-/api/v1/products 
-/api/v1/products/static
-/api/v1/products?name=VALUE & price=VALUE --Search as per name and price
-/api/v1/products?sort=price name --Sort on the basis of name and price
-/api/v1/products?select=name -- API will respond only with the name of the product 
+`/api/v1/products`</br>
+`/api/v1/products/static`
+`/api/v1/products?name=VALUE & price=VALUE` --Search as per name and price
+`/api/v1/products?sort=price name` --Sort on the basis of name and price
+`/api/v1/products?select=name` -- API will respond only with the name of the product 
 `/api/v1/products?numericFilters=price<=40` --API will respond with the details of the products whose price is less than 40
 
 Features added so far 
