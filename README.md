@@ -25,5 +25,5 @@
 3. Place your MongoDB uri as MONGO_URI=yourURI
 4. Manupulate the schemas as required in `model.js`
 5. Match the view fetching from the API route above
-6. Take a look at `controller.js` to match with the way API is responding to render contents in the front end 
+6. Take a look at `controllers.js` to match with the way API is responding to render contents in the front end 
 
