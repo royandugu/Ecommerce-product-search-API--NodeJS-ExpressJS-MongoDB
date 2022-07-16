@@ -28,11 +28,11 @@
 </br>
 
 </br>
-**Response format for non static**
-![](Images/2.jpg)
+**Response format for non static** </br>
+<img src="Images/2.jpg"/>
 </br>
-**Response format for static fields**
-![](Images/1.jpg)
+**Response format for static fields**</br>
+<img src="Images/1.jpg/>
 
 </br>
 Additional info </br>
