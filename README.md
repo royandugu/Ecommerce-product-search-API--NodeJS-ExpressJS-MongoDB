@@ -29,10 +29,10 @@
 
 </br>
 **Response format for non static** </br>
-<img src="Images/2.jpg"/>
+<img src="Images/1.JPG"/>
 </br>
-**Response format for static fields**</br>
-<img src="Images/1.jpg/>
+**Response format for static**</br>
+<img src="Images/2.JPG"/>
 
 </br>
 Additional info </br>
