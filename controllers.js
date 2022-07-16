@@ -44,11 +44,9 @@ const getProducts=async (req,res)=>{
     filters.split(',').forEach((comp)=>{
         const [field,operator,value] = comp.split('-');
         if(options.includes(field)) queryObject[field]={[operator]:parseInt([value])};
-        console.log(queryObject);
         result.find(queryObject);
     })
     const products=await result;
-    
     res.status(200).json({noOfProducts:products.length,pageNo:page,data:products});
 }
-module.exports={getProductsStatic,getProducts};1
+module.exports={getProductsStatic,getProducts};
