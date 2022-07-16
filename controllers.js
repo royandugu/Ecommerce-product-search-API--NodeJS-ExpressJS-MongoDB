@@ -2,7 +2,7 @@ const storeModel=require("./model");
 
 const getProductsStatic=async (req,res)=>{
     const staticProducts=await storeModel.find({});
-    res.status(200).json({data:staticProducts});
+    res.status(200).json({noOfProducts:staticProducts.length,data:staticProducts});
 }
 
 const getProducts=async (req,res)=>{
@@ -29,23 +29,25 @@ const getProducts=async (req,res)=>{
     const page=parseInt(req.query.page)||1;
     const skip=(page-1)*limit;
     result.skip(skip).limit(limit);
-    
-    //Numeric filters setup
-    const operationMap={
-        ">=":"$gte",
-        "<=":"$lte",
-        ">":"$gt",
-        "<":"$lt",
-        "=":"$eq"
+
+    if(numericFilters){
+        //Numeric filters setup
+        const operationMap={
+            ">=":"$gte",
+            "<=":"$lte",
+            ">":"$gt",
+            "<":"$lt",
+            "=":"$eq"
+        }
+        const $regEx=/\b(>=|<=|>|<|=)\b/g;
+        const filters=numericFilters.replace($regEx,(match)=>`-${operationMap[match]}-`);
+        const options=["price","rating"];
+        filters.split(',').forEach((comp)=>{
+            const [field,operator,value] = comp.split('-');
+            if(options.includes(field)) queryObject[field]={[operator]:parseInt([value])};
+            result.find(queryObject);
+        })
     }
-    const $regEx=/\b(>=|<=|>|<|=)\b/g;
-    const filters=numericFilters.replace($regEx,(match)=>`-${operationMap[match]}-`);
-    const options=["price","rating"];
-    filters.split(',').forEach((comp)=>{
-        const [field,operator,value] = comp.split('-');
-        if(options.includes(field)) queryObject[field]={[operator]:parseInt([value])};
-        result.find(queryObject);
-    })
     const products=await result;
     res.status(200).json({noOfProducts:products.length,pageNo:page,data:products});
 }
