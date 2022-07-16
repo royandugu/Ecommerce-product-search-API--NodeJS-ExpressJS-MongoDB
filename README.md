@@ -25,5 +25,26 @@
 3. Place your MongoDB uri as MONGO_URI=yourURI
 4. Manupulate the schemas as required in `model.js`
 5. Match the view fetching from the API route above
-6. Take a look at `controllers.js` to match with the way API is responding to render contents in the front end 
+6. Take a look at `controllers.js` to match with the way API is responding to render contents in the front end </br>
+</br>
+
+Additional info</br>
+**Logics** </br>
+Paging logic (`controllers.js`):
+We take in two variable values from request query (req.query), page and limit. Limit for the limit method to be attached 
+with our mongoose model that limits the number of products to be sent as a response. Combination of skip method and limit
+method be like :- 
+skipBy=(page-1)*limit
+For example: I want 10 products in page number 2 then (2-1)*10. Therefore, skipBy=10. 
+</br>
+Numeric Filters (`controllers.js`): 
+The way values are requested into the API varies from the way values are handled by our mongoose query operators. For example:
+We may get our request as price>=30. But this has to be handled as price:{$gt:30}. So an operator map is created to map corresponding
+mongoose query operators for the ones we get as requests. Go through the request string replace the key of operatorMap with it's value.
+price>=30 now becomes price-$gt-30. With the help of the '-' we spit this into three parts using JavaScript's spilt method. Then we can 
+arrange them as price:{$gt:30}
+</br>
+</br>
+
+**--Learned and implemented from John Smilga--**
 
