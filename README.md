@@ -34,8 +34,8 @@ Additional info </br>
 Paging logic (`controllers.js`):
 We take in two variable values from request query (req.query), page and limit. Limit for the limit method to be attached 
 with our mongoose model that limits the number of products to be sent as a response. Combination of skip method and limit
-method be like :- 
-skipBy=(page-1)*limit
+method be like :- </br>
+skipBy=(page-1)*limit </br>
 For example: I want 10 products in page number 2 then (2-1)*10. Therefore, skipBy=10. 
 </br> </br>
 Numeric Filters (`controllers.js`): 
