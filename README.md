@@ -25,9 +25,16 @@
 3. Place your MongoDB uri as MONGO_URI=yourURI
 4. Manupulate the schemas as required in `model.js`
 5. Match the view fetching from the API route above
-6. Take a look at `controllers.js` to match with the way API is responding to render contents in the front end </br>
 </br>
 
+</br>
+**Response format for non static**
+![](Images/2.jpg)
+</br>
+**Response format for static fields**
+![](Images/1.jpg)
+
+</br>
 Additional info </br>
 </br>
 
